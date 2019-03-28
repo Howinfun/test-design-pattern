@@ -6,7 +6,6 @@ import com.hyf.testdesignpattern.strategy.calprice.CalPrice;
 import com.hyf.testdesignpattern.strategy.calprice.CalPriceProxy;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.lang.annotation.Annotation;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -89,15 +88,7 @@ public class CalPriceFactoryS {
             // 获取包下的所有文件
             File file = new File(classLoader.getResource(CAL_PRICE_PACKAGE.replace(".","/")).toURI());
             // 对文件进行过滤，只留下后缀名为class的文件
-            return file.listFiles(new FileFilter() {
-                @Override
-                public boolean accept(File pathname) {
-                    if(pathname.getName().endsWith(".class")){
-                        return true;
-                    }
-                    return false;
-                }
-            });
+            return file.listFiles(pathName -> { return pathName.getName().endsWith(".class");});
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
