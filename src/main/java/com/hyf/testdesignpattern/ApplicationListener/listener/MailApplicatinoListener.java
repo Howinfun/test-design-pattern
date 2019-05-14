@@ -6,6 +6,7 @@ import com.hyf.testdesignpattern.ApplicationListener.service.MailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * @date 2019/5/13
  */
 @Component
+@Async
 public class MailApplicatinoListener implements ApplicationListener<UserEvent> {
 
     @Autowired

@@ -1,6 +1,7 @@
 package com.hyf.testdesignpattern.ApplicationListener.service;
 
 import com.hyf.testdesignpattern.ApplicationListener.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
  * @date 2019/5/13
  */
 @Service
+@Slf4j
 public class MailService {
 
     /**
@@ -16,6 +18,6 @@ public class MailService {
      * @param user
      */
     public void sendEMail(User user){
-        System.out.println("给用户"+user.getName()+"发送邮件，EMail为："+user.getMail());
+        log.info("给用户"+user.getName()+"发送邮件，EMail为："+user.getMail());
     }
 }

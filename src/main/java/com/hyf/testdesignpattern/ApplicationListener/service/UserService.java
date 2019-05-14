@@ -3,6 +3,7 @@ package com.hyf.testdesignpattern.ApplicationListener.service;
 import com.hyf.testdesignpattern.ApplicationListener.entity.User;
 import com.hyf.testdesignpattern.ApplicationListener.event.UserEvent;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
  * @date 2019/5/13
  */
 @Service
+@Slf4j
 @AllArgsConstructor
 public class UserService {
 
@@ -24,7 +26,7 @@ public class UserService {
      * @param user
      */
     public void registerUser(User user){
-        System.out.println("用户："+user.getName()+"注册成功");
+        log.info("用户："+user.getName()+"注册成功");
         applicationContext.publishEvent(new UserEvent(this,user.getName(),user.getPhone(),user.getMail()));
 
         // 发送短信&邮件
